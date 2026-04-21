@@ -6,8 +6,7 @@
   <title id="page-title">Revenues Labs | Qualified Meetings for B2B Teams</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@700;800&display=swap');
-
-    /* Ã¢â€â‚¬Ã¢â€â‚¬ Tokens Ã¢â€â‚¬Ã¢â€â‚¬ */
+    /* Tokens */
     :root {
       --bg: #ffffff;
       --bg-alt: #f6f8fa;
@@ -42,8 +41,7 @@
       --badge-bg: rgba(35, 134, 54, 0.15);
       --badge-text: #3fb950;
     }
-
-    /* Ã¢â€â‚¬Ã¢â€â‚¬ Reset Ã¢â€â‚¬Ã¢â€â‚¬ */
+    /* Reset */
     *, *::before, *::after {
       margin: 0;
       padding: 0;
@@ -64,8 +62,7 @@
       color: inherit;
       text-decoration: none;
     }
-
-    /* Ã¢â€â‚¬Ã¢â€â‚¬ Nav Ã¢â€â‚¬Ã¢â€â‚¬ */
+    /* Nav */
     .nav {
       position: sticky;
       top: 45px;
@@ -188,8 +185,7 @@
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
-
-    /* Ã¢â€â‚¬Ã¢â€â‚¬ View Containers Ã¢â€â‚¬Ã¢â€â‚¬ */
+    /* View Containers */
     .view-container {
       display: none;
     }
@@ -230,8 +226,7 @@
       margin-bottom: 24px;
       transition: background 0.3s, color 0.3s;
     }
-
-    /* Ã¢â€â‚¬Ã¢â€â‚¬ Pricing Ã¢â€â‚¬Ã¢â€â‚¬ */
+    /* Pricing */
     .pricing-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -289,12 +284,11 @@
     }
 
     .pricing-card-list li::before {
-      content: 'Ã¢â€ â€™';
+      content: '->';
       color: var(--accent);
       font-family: var(--font-mono);
     }
-
-    /* Ã¢â€â‚¬Ã¢â€â‚¬ Logo Strip Ã¢â€â‚¬Ã¢â€â‚¬ */
+    /* Logo Strip */
     .logo-strip-section {
       padding: 40px var(--side-padding);
       border-bottom: 1px solid var(--border);
@@ -408,8 +402,7 @@
     .btn-secondary:hover {
       border-color: var(--text);
     }
-
-    /* Ã¢â€â‚¬Ã¢â€â‚¬ Section primitives Ã¢â€â‚¬Ã¢â€â‚¬ */
+    /* Section primitives */
     .section {
       max-width: var(--max-width);
       margin: 0 auto;
@@ -443,8 +436,7 @@
       max-width: 520px;
       line-height: 1.7;
     }
-
-    /* Ã¢â€â‚¬Ã¢â€â‚¬ Hero Ã¢â€â‚¬Ã¢â€â‚¬ */
+    /* Hero */
     .hero {
       max-width: var(--max-width);
       margin: 0 auto;
@@ -476,8 +468,7 @@
       display: flex;
       gap: 12px;
     }
-
-    /* Ã¢â€â‚¬Ã¢â€â‚¬ Hero card Ã¢â€â‚¬Ã¢â€â‚¬ */
+    /* Hero */
     .hero-card {
       background: var(--white);
       border: 1px solid var(--border);
@@ -485,8 +476,7 @@
       padding: 24px;
       width: 100%;
     }
-
-    /* Ã¢â€â‚¬Ã¢â€â‚¬ Automation Console (New Graphic) Ã¢â€â‚¬Ã¢â€â‚¬ */
+    /* Automation Console */
     .automation-console {
       background: var(--bg-alt);
       border: 1px solid var(--border);
@@ -649,8 +639,7 @@
       line-height: 1.5;
       transition: background 0.3s;
     }
-
-    /* Ã¢â€â‚¬Ã¢â€â‚¬ Theme Toggle Ã¢â€â‚¬Ã¢â€â‚¬ */
+    /* Theme Toggle */
     .theme-toggle {
       background: none;
       border: 1px solid var(--border);
@@ -787,8 +776,7 @@
       background: var(--accent);
       border-radius: 2px;
     }
-
-    /* Ã¢â€â‚¬Ã¢â€â‚¬ Services Ã¢â€â‚¬Ã¢â€â‚¬ */
+    /* Services */
     .service-row {
       display: grid;
       grid-template-columns: 48px 1fr;
@@ -833,8 +821,7 @@
       font-size: 14px;
       color: var(--text-secondary);
     }
-
-    /* Ã¢â€â‚¬Ã¢â€â‚¬ FAQ Ã¢â€â‚¬Ã¢â€â‚¬ */
+    /* FAQ */
     .faq-item {
       padding: 24px 0;
       border-top: 1px solid var(--border);
@@ -863,7 +850,7 @@
     }
 
     .faq-item.open .faq-question::after {
-      content: 'Ã¢Ë†â€™';
+      content: '-';
     }
 
     .faq-answer {
@@ -894,8 +881,7 @@
       border: 1px solid var(--border);
       border-radius: 4px;
     }
-
-    /* Ã¢â€â‚¬Ã¢â€â‚¬ Contact Ã¢â€â‚¬Ã¢â€â‚¬ */
+    /* Contact */
     .contact-section {
       text-align: center;
       padding: 80px var(--side-padding);
@@ -912,8 +898,7 @@
       margin: 0 auto 32px;
       text-align: center;
     }
-
-    /* Ã¢â€â‚¬Ã¢â€â‚¬ Footer Ã¢â€â‚¬Ã¢â€â‚¬ */
+    /* Footer */
     .footer {
       max-width: var(--max-width);
       margin: 0 auto;
@@ -944,8 +929,7 @@
     .footer-links a:hover {
       color: var(--text);
     }
-
-    /* Ã¢â€â‚¬Ã¢â€â‚¬ Lead Gen page Ã¢â€â‚¬Ã¢â€â‚¬ */
+    /* Lead Gen page */
     .leadgen-hero {
       max-width: var(--max-width);
       margin: 0 auto;
@@ -1011,8 +995,7 @@
       color: var(--text-secondary);
       line-height: 1.6;
     }
-
-    /* Ã¢â€â‚¬Ã¢â€â‚¬ Mobile nav Ã¢â€â‚¬Ã¢â€â‚¬ */
+    /* Mobile nav */
     .nav-toggle {
       display: none;
       background: none;
@@ -1026,8 +1009,7 @@
       height: 24px;
       stroke: var(--text);
     }
-
-    /* Ã¢â€â‚¬Ã¢â€â‚¬ Animations Ã¢â€â‚¬Ã¢â€â‚¬ */
+    /* Animations */
 
     /* Scroll reveal base */
     .reveal {
@@ -1061,8 +1043,7 @@
       opacity: 1;
       transform: translateY(0);
     }
-
-    /* Hero entrance sequence */
+    /* Hero */
     .hero-headline {
       opacity: 0;
       transform: translateY(20px);
@@ -1087,8 +1068,7 @@
         transform: translateY(0);
       }
     }
-
-    /* Hero card entrance + float */
+    /* Hero */
     .hero-card {
       opacity: 0;
       transform: translateY(30px) scale(0.97);
@@ -1101,8 +1081,7 @@
         transform: translateY(0) scale(1);
       }
     }
-
-    /* Hero card subtle float */
+    /* Hero */
     .hero-card {
       animation: cardIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards,
                  cardFloat 4s ease-in-out 1.5s infinite;
@@ -1112,8 +1091,7 @@
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-6px); }
     }
-
-    /* Hero card rows stagger in */
+    /* Hero */
     .hero-card-row {
       opacity: 0;
       transform: translateX(-10px);
@@ -1150,8 +1128,7 @@
       0%, 100% { opacity: 1; }
       50% { opacity: 0.6; }
     }
-
-    /* Nav entrance */
+    /* Nav */
     .nav {
       opacity: 0;
       animation: fadeDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -1182,8 +1159,7 @@
       transform: translateX(4px);
       background: rgba(217, 138, 43, 0.03);
     }
-
-    /* Pricing card hover */
+    /* Pricing */
     .pricing-card {
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
                   border-color 0.3s ease,
@@ -1217,8 +1193,7 @@
     .service-row:hover .service-icon {
       transform: rotate(-5deg) scale(1.05);
     }
-
-    /* FAQ smooth expand */
+    /* FAQ */
     .faq-answer {
       transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
                   opacity 0.3s ease;
@@ -1228,8 +1203,7 @@
     .faq-item.open .faq-answer {
       opacity: 1;
     }
-
-    /* FAQ question hover */
+    /* FAQ */
     .faq-question {
       transition: color 0.2s ease;
     }
@@ -1297,8 +1271,7 @@
         scroll-behavior: auto;
       }
     }
-
-    /* Ã¢â€â‚¬Ã¢â€â‚¬ Campaign Pulse Ã¢â€â‚¬Ã¢â€â‚¬ */
+    /* Campaign Pulse */
     .pulse-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -1413,8 +1386,7 @@
     .section-disabled {
       display: none !important;
     }
-
-    /* Ã¢â€â‚¬Ã¢â€â‚¬ Responsive Ã¢â€â‚¬Ã¢â€â‚¬ */
+    /* Responsive */
     @media (max-width: 768px) {
       :root {
         --side-padding: 20px;
