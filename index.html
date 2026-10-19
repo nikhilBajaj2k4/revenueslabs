@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title id="page-title">Revenues Labs | Monetize Your LinkedIn Audience Into Pipeline</title>
+  <meta name="description" content="Revenues Labs runs done-for-you cold email and LinkedIn outreach. From prospect research to reply management and qualified sales calls, we handle the prospecting.">
+  <title id="page-title">Revenues Labs | Done-for-You Outreach & Qualified Sales Calls</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@700;800&display=swap');
     /* Tokens - keep same aesthetic */
@@ -1435,9 +1436,49 @@
         position: relative;
       }
     }
+
+    /* Outreach content: preserve the existing type, colors and component system. */
+    body { padding-top: 30px; }
+    .nav { top: 30px; }
+    .accent-text { color: var(--accent); }
+    [data-theme="dark"] .status-badge,
+    [data-theme="dark"] .hero-card-badge { color: #7ee787; }
+    .hero-card-badge { flex-shrink: 0; white-space: nowrap; animation: none; color: var(--accent); }
+    section[id] { scroll-margin-top: 110px; }
+    .metric-value { font-size: clamp(21px, 2.6vw, 30px); line-height: 1.2; }
+    .hero-actions { flex-wrap: wrap; }
+    .sample-message p { font-size: 14px; margin-bottom: 14px; color: var(--text-secondary); }
+    #campaign .split-list li { display: block; }
+    .sample-message .sample-subject { color: var(--text); padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+    .sample-caption, .cta-note { font: 11px/1.7 var(--font-mono); color: var(--text-secondary); }
+    .cta-note { margin-top: 14px; }
+    .faq-question { width: 100%; text-align: left; background: transparent; border: 0; color: var(--text); gap: 20px; }
+    .faq-item.open .faq-answer { max-height: none; }
+    .faq-answer[hidden] { display: none; }
+    .skip-link { position: fixed; left: 12px; top: -100px; z-index: 3000; padding: 10px 16px; background: var(--bg); border: 2px solid var(--accent); }
+    .skip-link:focus { top: 8px; }
+    :focus-visible { outline: 2px solid var(--accent-2); outline-offset: 4px; }
+    @media (max-width: 1000px) {
+      .leadgen-hero { grid-template-columns: minmax(0, 1fr) minmax(0, 340px); gap: 32px; }
+      .nav-links { gap: 16px; }
+      .hero-headline { font-size: 44px; }
+    }
+    @media (max-width: 768px) {
+      .leadgen-hero { grid-template-columns: minmax(0, 1fr); }
+      .nav { top: 0; }
+      .hero-headline { font-size: clamp(32px, 8.5vw, 42px); }
+      .hero-card { max-width: none; }
+      .status-badge { letter-spacing: .04em; }
+      .section-heading { font-size: 27px; line-height: 1.3; }
+      .pricing-card { padding: 24px; }
+      .footer { flex-wrap: wrap; gap: 20px; }
+      .footer-links { flex-wrap: wrap; }
+      .contact-section { padding-left: 20px; padding-right: 20px; }
+    }
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#leadgen-view">Skip to content</a>
   <script>
     (function() {
       const savedTheme = localStorage.getItem('theme');
@@ -1452,20 +1493,20 @@
   <!-- Ticker Strip -->
   <div class="ticker-wrapper">
     <div class="ticker-content">
-      <div class="ticker-item">AUDIENCE_AUDITED</div>
-      <div class="ticker-item">PROFILE_OPTIMIZED</div>
-      <div class="ticker-item">CONTENT_SYSTEM_LIVE</div>
-      <div class="ticker-item">DM_FLOW_ACTIVE</div>
+      <div class="ticker-item">ICP_DEFINED</div>
+      <div class="ticker-item">PROSPECTS_RESEARCHED</div>
+      <div class="ticker-item">MESSAGING_READY</div>
+      <div class="ticker-item">OUTREACH_ACTIVE</div>
       <div class="ticker-item">LEAD_QUALIFIED</div>
       <div class="ticker-item">MEETING_BOOKED</div>
-      <div class="ticker-item">PIPELINE_MONETIZED</div>
-      <div class="ticker-item">AUDIENCE_AUDITED</div>
-      <div class="ticker-item">PROFILE_OPTIMIZED</div>
-      <div class="ticker-item">CONTENT_SYSTEM_LIVE</div>
-      <div class="ticker-item">DM_FLOW_ACTIVE</div>
+      <div class="ticker-item">SALES_HANDOFF</div>
+      <div class="ticker-item">ICP_DEFINED</div>
+      <div class="ticker-item">PROSPECTS_RESEARCHED</div>
+      <div class="ticker-item">MESSAGING_READY</div>
+      <div class="ticker-item">OUTREACH_ACTIVE</div>
       <div class="ticker-item">LEAD_QUALIFIED</div>
       <div class="ticker-item">MEETING_BOOKED</div>
-      <div class="ticker-item">PIPELINE_MONETIZED</div>
+      <div class="ticker-item">SALES_HANDOFF</div>
     </div>
   </div>
 
@@ -1474,43 +1515,44 @@
     <div class="nav-container">
       <a href="#" class="nav-brand">Revenues Labs</a>
 
-      <ul class="nav-links">
+      <ul class="nav-links" id="nav-links">
         <li>
           <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
             <svg class="moon-icon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
             <svg class="sun-icon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.07l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
           </button>
         </li>
-        <li><a href="#system">System</a></li>
+        <li><a href="#system">Services</a></li>
+        <li><a href="#process">How it works</a></li>
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#faq">FAQ</a></li>
-        <li><a href="https://calendly.com/nikhilbajajbusiness/introduction" class="btn-outline" target="_blank" rel="noopener">Book a Call</a></li>
+        <li><a href="https://calendly.com/nikhilbajajbusiness/introduction" class="btn-outline" target="_blank" rel="noopener">Book a Strategy Call</a></li>
       </ul>
 
-      <button class="nav-toggle" aria-label="Menu">
+      <button class="nav-toggle" aria-label="Open navigation" aria-controls="nav-links" aria-expanded="false">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
       </button>
     </div>
   </nav>
 
   <!-- MAIN VIEW -->
-  <div id="leadgen-view" class="view-container active">
-    <!-- Hero: LinkedIn Monetization -->
+  <main id="leadgen-view" class="view-container active">
+    <!-- Hero: Done-for-you client acquisition -->
     <section class="leadgen-hero">
       <div class="hero-content">
-        <div class="status-badge">FOR FOUNDERS, TEAMS & CREATORS ON LINKEDIN — ANY AUDIENCE SIZE</div>
-        <h1 class="hero-headline">You built the audience. We turn it into revenue.</h1>
-        <p class="hero-sub">Have audience? We monetize it. No audience? We build your ICP list and go direct. Profile → content → outreach → booked calls. Done-for-you.</p>
+        <div class="status-badge">DONE-FOR-YOU OUTREACH FOR B2B BUSINESSES</div>
+        <h1 class="hero-headline">More conversations.<br>More opportunities.<br><span class="accent-text">Less prospecting.</span></h1>
+        <p class="hero-sub">We find your ideal buyers, start conversations through cold email and LinkedIn, and handle the follow-up. You show up for qualified sales calls and focus on closing.</p>
         <div class="hero-actions">
-          <a href="https://calendly.com/nikhilbajajbusiness/introduction" class="btn-primary" target="_blank" rel="noopener">Book a Call</a>
+          <a href="https://calendly.com/nikhilbajajbusiness/introduction" class="btn-primary" target="_blank" rel="noopener">Book a Strategy Call</a>
           <a href="#system" class="btn-secondary">See how it works</a>
         </div>
-        <p style="margin-top:16px; font-family:var(--font-mono); font-size:11px; color:var(--text-secondary); letter-spacing:0.04em;">Coaches, consultants, B2B teams & founders • Any audience size</p>
+        <p style="margin-top:16px; font-family:var(--font-mono); font-size:11px; color:var(--text-secondary); letter-spacing:0.04em;">For agencies, consultants & B2B teams · Setup + performance pricing</p>
       </div>
 
       <div class="hero-card campaign-dashboard">
         <div class="hero-card-header">
-          <span class="hero-card-title">LinkedIn Monetization Engine</span>
+          <span class="hero-card-title">Your client acquisition system</span>
           <span class="hero-card-badge">Operator-led</span>
         </div>
 
@@ -1519,8 +1561,8 @@
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6"/><path d="M23 11v2"/><path d="M17 11v2"/></svg>
           </div>
           <div>
-            <div class="hero-card-label">Audience → ICP locked</div>
-            <div class="hero-card-status">Audit → ICP + offer mapped before launch.</div>
+            <div class="hero-card-label">The right people</div>
+            <div class="hero-card-status">Prospect lists built around your ideal buyer.</div>
           </div>
         </div>
 
@@ -1529,8 +1571,8 @@
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M12 12h.01"/><path d="M8 12h.01"/><path d="M16 12h.01"/></svg>
           </div>
           <div>
-            <div class="hero-card-label">Profile & content that converts</div>
-            <div class="hero-card-status">Profile + content turns views into DMs.</div>
+            <div class="hero-card-label">A reason to reply</div>
+            <div class="hero-card-status">Relevant email and LinkedIn messaging.</div>
           </div>
         </div>
 
@@ -1539,55 +1581,55 @@
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/><path d="M9 9h.01"/><path d="M12 9h.01"/><path d="M15 9h.01"/></svg>
           </div>
           <div>
-            <div class="hero-card-label">DMs & outbound handled</div>
-            <div class="hero-card-status">Warm + cold outreach. Inbox handled. Calls qualified.</div>
+            <div class="hero-card-label">A clear next step</div>
+            <div class="hero-card-status">Follow-ups, qualification and calendar handoff.</div>
           </div>
         </div>
 
         <div class="hero-card-progress"><div class="hero-card-progress-bar"></div></div>
-        <div class="hero-card-status" style="margin-top: 12px;">One offer. One outcome: booked calls.</div>
+        <div class="hero-card-status" style="margin-top: 12px;">From prospect research to a qualified conversation. Handled.</div>
       </div>
     </section>
 
     <!-- Problem / Gap -->
     <section class="section section-border reveal" id="problem">
       <p class="section-label">The gap</p>
-      <h2 class="section-heading">Followers ≠ pipeline.</h2>
-      <p class="section-subtext">Likes don’t pay. We monetize your audience — or build your ICP list and go direct.</p>
+      <h2 class="section-heading">Your next client shouldn’t depend on a referral.</h2>
+      <p class="section-subtext">Great work keeps clients. A consistent outreach system helps you find the next ones, without spending your day building lists and chasing replies.</p>
 
       <div class="split-grid stagger">
         <div class="split-card is-negative">
           <div class="split-card-title">Without a system</div>
           <ul class="split-list">
-            <li>Random DMs, no follow-up</li>
-            <li>Profile = resume, not converter</li>
-            <li>Followers never hit calendar</li>
-            <li>Manual, inconsistent lead gen</li>
+            <li>Referrals arrive on someone else’s schedule</li>
+            <li>Hours spent searching for the right contacts</li>
+            <li>Outreach gets pushed aside for client work</li>
+            <li>Interested replies get lost without follow-up</li>
           </ul>
         </div>
         <div class="split-card is-positive">
           <div class="split-card-title">With Revenues Labs</div>
           <ul class="split-list">
-            <li>Audience audited by ICP</li>
-            <li>Profile + content drives DMs</li>
-            <li>Warm + cold outreach, daily</li>
-            <li>Only qualified calls on your calendar</li>
+            <li>Prospects matched to your offer and market</li>
+            <li>Messaging built around a buyer’s needs</li>
+            <li>Email and LinkedIn outreach managed for you</li>
+            <li>Meetings qualified against criteria we agree</li>
           </ul>
         </div>
       </div>
 
       <div class="metric-strip stagger">
         <div>
-          <div class="metric-value">Any size</div>
-          <div class="metric-label">500 or 50k — start now</div>
+          <div class="metric-value">Email + LinkedIn</div>
+          <div class="metric-label">Reach buyers where they work</div>
         </div>
         <div>
-          <div class="metric-value">30–60d</div>
-          <div class="metric-label">To pipeline</div>
+          <div class="metric-value">One team</div>
+          <div class="metric-label">Research through booking</div>
         </div>
         <div>
           <div class="metric-value">Done-for-you</div>
-          <div class="metric-label">List, content, inbox & booking</div>
+          <div class="metric-label">You take the sales calls</div>
         </div>
       </div>
     </section>
@@ -1595,71 +1637,97 @@
     <!-- What we run -->
     <section class="section section-border reveal" id="system">
       <p class="section-label">The system</p>
-      <h2 class="section-heading">Everything between audience and revenue — handled</h2>
-      <p class="section-subtext">You own the voice. We run the engine.</p>
+      <h2 class="section-heading">We do the prospecting. You do the closing.</h2>
+      <p class="section-subtext">A complete outreach operation, from deciding who to contact to getting the right conversation on your calendar.</p>
 
       <div class="infra-grid stagger">
         <div class="infra-card">
           <div class="infra-card-icon">
             <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M12 11h4"/><path d="M12 8v8"/><circle cx="18" cy="11" r="3"/></svg>
           </div>
-          <div class="infra-card-title">ICP List Build & Audit</div>
-          <div class="infra-card-desc">We audit what you have. If light, we build your ICP list and go direct — no vanity growth.</div>
+          <div class="infra-card-title">Find your ideal buyers</div>
+          <div class="infra-card-desc">We define your ideal customer profile, research relevant companies and build a focused list of decision-makers to contact.</div>
         </div>
         <div class="infra-card">
           <div class="infra-card-icon">
             <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11l-3 3-3-3"/><path d="M19 14V8"/></svg>
           </div>
-          <div class="infra-card-title">Profile as Converter</div>
-          <div class="infra-card-desc">Headline, banner, about, featured — one offer, one CTA.</div>
+          <div class="infra-card-title">Make your offer clear</div>
+          <div class="infra-card-desc">We sharpen your positioning and LinkedIn profile so prospects understand who you help, what you solve and why they should talk to you.</div>
         </div>
         <div class="infra-card">
           <div class="infra-card-icon">
             <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 17l4-8 4 4 4-6"/></svg>
           </div>
-          <div class="infra-card-title">Content → DM System</div>
-          <div class="infra-card-desc">Every post drives DMs. Pillars + CTAs create intent.</div>
+          <div class="infra-card-title">Give prospects a reason to reply</div>
+          <div class="infra-card-desc">We write outreach sequences and LinkedIn content around your buyers’ problems, with a clear offer and a simple next step.</div>
         </div>
         <div class="infra-card">
           <div class="infra-card-icon">
             <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           </div>
-          <div class="infra-card-title">Warm + Cold Outbound</div>
-          <div class="infra-card-desc">Warm activation + net-new ICP via LinkedIn & email. Handled.</div>
+          <div class="infra-card-title">Run email & LinkedIn outreach</div>
+          <div class="infra-card-desc">We reach new prospects and activate relevant existing connections. Outreach and follow-ups are managed as one coordinated system.</div>
         </div>
         <div class="infra-card">
           <div class="infra-card-icon">
             <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
           </div>
-          <div class="infra-card-title">Inbox & Qualification</div>
-          <div class="infra-card-desc">Daily triage. Objections handled. Buyers qualified your way.</div>
+          <div class="infra-card-title">Handle replies & qualify interest</div>
+          <div class="infra-card-desc">We manage the inbox, answer questions and check interested prospects against the buyer criteria agreed with you.</div>
         </div>
         <div class="infra-card">
           <div class="infra-card-icon">
             <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/><path d="M12 14l2 2 4-4"/></svg>
           </div>
-          <div class="infra-card-title">Booking & Handoff</div>
-          <div class="infra-card-desc">Routing + handoff. Only qualified calls. Weekly tracking.</div>
+          <div class="infra-card-title">Book calls & keep improving</div>
+          <div class="infra-card-desc">Qualified conversations move to your calendar with context for the call. Weekly reporting helps us refine targeting and messaging.</div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section section-border reveal" id="campaign">
+      <p class="section-label">Inside a campaign</p>
+      <h2 class="section-heading">A focused conversation beats a broad pitch.</h2>
+      <p class="section-subtext">Here’s how a campaign could come together for a B2B agency. This is an illustrative example, not a client result.</p>
+      <div class="split-grid stagger">
+        <div class="split-card">
+          <div class="split-card-title">The plan</div>
+          <ul class="split-list">
+            <li><strong>Audience:</strong> Marketing leaders at companies that match the agency’s ideal customer profile.</li>
+            <li><strong>Offer:</strong> A specific service tied to a problem those teams face.</li>
+            <li><strong>Next step:</strong> Start a conversation, check fit and book a call when there’s interest.</li>
+          </ul>
+        </div>
+        <div class="split-card sample-message">
+          <div class="split-card-title">Example first email</div>
+          <p class="sample-subject">Subject: a question about your content</p>
+          <p>Hi Alex,</p>
+          <p>Is turning your team’s expertise into regular LinkedIn content on your radar?</p>
+          <p>We help B2B teams turn interviews with their experts into posts, so the team can keep publishing without writing everything from scratch.</p>
+          <p>Would it be useful if I sent over an example of how that could work?</p>
+          <span class="sample-caption">Illustrative copy for a content agency · Tailored to each actual offer</span>
         </div>
       </div>
     </section>
 
     <!-- Process -->
-    <section class="section section-border reveal">
+    <section class="section section-border reveal" id="process">
       <p class="section-label">Process</p>
-      <h2 class="section-heading">How it works — 3 steps</h2>
+      <h2 class="section-heading">From first conversation to your next sales call.</h2>
       <div style="margin-top: 40px;" class="stagger">
         <div class="service-row">
           <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
-          <div><div class="service-title">1. Audit & install</div><div class="service-desc">Week 1: audit or build ICP list, lock offer + ICP, rebuild profile, build assets.</div></div>
+          <div><div class="service-title">01. Build the plan</div><div class="service-desc">We review your offer, market and current pipeline. Together, we agree on your ideal buyer, qualification criteria and campaign scope before launch.</div></div>
         </div>
         <div class="service-row">
           <div class="service-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
-          <div><div class="service-title">2. Activate & run</div><div class="service-desc">Warm + cold outbound live. Content drives DMs. Inbox managed daily.</div></div>
+          <div><div class="service-title">02. Launch your outreach</div><div class="service-desc">We build the prospect list, prepare your messaging and run email and LinkedIn campaigns. Our team handles follow-ups and interested replies.</div></div>
         </div>
         <div class="service-row">
           <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-          <div><div class="service-title">3. Optimize & scale</div><div class="service-desc">We double down on what converts. Weekly tuning, custom model.</div></div>
+          <div><div class="service-title">03. Take the calls. Refine the system.</div><div class="service-desc">You meet qualified prospects and share feedback. We review campaign activity and call quality each week, then adjust the list, offer and messaging.</div></div>
         </div>
       </div>
     </section>
@@ -1667,38 +1735,31 @@
     <!-- Who for / not for -->
     <section class="section section-border reveal" id="fit">
       <p class="section-label">Fit</p>
-      <h2 class="section-heading">Who it’s for</h2>
-      <p class="section-subtext">You have expertise + an offer. We handle the pipeline.</p>
+      <h2 class="section-heading">Built for businesses that sell through conversations.</h2>
+      <p class="section-subtext">You have a clear service and the capacity to take on clients. We help you get in front of the right buyers.</p>
       <div style="margin-top: 40px;" class="stagger">
         <div class="service-row">
           <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-          <div><div class="service-title">On LinkedIn — 500 or 50k</div><div class="service-desc">Small? We build ICP list and go direct. Large? We monetize warm. Either works.</div></div>
+          <div><div class="service-title">Agencies & service businesses</div><div class="service-desc">Keep delivering for clients while we build and run the outreach that starts new business conversations.</div></div>
         </div>
         <div class="service-row">
           <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-          <div><div class="service-title">High-ticket or B2B offer</div><div class="service-desc">Coaches, consultants, agencies — if LTV supports a call, this pays.</div></div>
+          <div><div class="service-title">Consultants & experts</div><div class="service-desc">Turn a specific area of expertise into a clear offer for the decision-makers who need it.</div></div>
         </div>
         <div class="service-row">
           <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-          <div><div class="service-title">You can fulfill</div><div class="service-desc">Calendar space + delivery capacity. We book real buyers.</div></div>
+          <div><div class="service-title">Founders & B2B teams</div><div class="service-desc">Add a managed prospecting operation without taking on the daily work of list building, messaging and inbox management.</div></div>
         </div>
         <div class="service-row" style="opacity:0.9; background: var(--bg-alt); border-radius:8px;">
           <div class="service-icon" style="background: rgba(209,36,47,0.08);"><svg viewBox="0 0 24 24" style="stroke:#d1242f"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg></div>
-          <div><div class="service-title">Not for: no offer or no capacity</div><div class="service-desc">We fix audience size. We can’t fix a missing offer.</div></div>
+          <div><div class="service-title">A clear offer comes first</div><div class="service-desc">You’ll need a defined service, time for sales calls and room to deliver. We assess fit together before starting.</div></div>
         </div>
       </div>
     </section>
 
-    <section class="contact-section reveal" id="contact">
-      <h2 class="section-heading">Ready to turn LinkedIn into revenue?</h2>
-      <p class="section-subtext">Have audience or not — we map your pipeline in 25 min. Book a call.</p>
-      <a href="https://calendly.com/nikhilbajajbusiness/introduction" class="btn-primary" target="_blank" rel="noopener">Book a Call</a>
-      <p style="margin-top:14px; font-family:var(--font-mono); font-size:11px; color:var(--text-secondary);">No pitch deck. Just your profile, your audience, and the revenue you’re leaving on the table.</p>
-    </section>
-  </div>
-
   <!-- Shared Logo Strip -->
-  <section class="logo-strip-section">
+  <section class="logo-strip-section" aria-label="Tools in our workflow">
+    <p class="section-label" style="text-align:center;">Tools in our workflow</p>
     <div class="logo-strip-container">
       <div class="logo-item">LINKEDIN</div>
       <div class="logo-item">APOLLO</div>
@@ -1713,25 +1774,25 @@
   <!-- Shared Pricing -->
   <section class="section section-border reveal" id="pricing">
     <p class="section-label">Pricing</p>
-    <h2 class="section-heading">Custom Pricing</h2>
-    <p class="section-subtext">No public rate. We audit, then quote. You pay only if it fits.</p>
+    <h2 class="section-heading">A clear scope. A model agreed upfront.</h2>
+    <p class="section-subtext">Pricing depends on your market, outreach scope and qualification requirements. We quote setup and performance terms after reviewing your business.</p>
     <div class="pricing-grid stagger">
       <div class="pricing-card">
-        <div class="pricing-card-label">LinkedIn Monetization Engine — Custom Quote</div>
-        <div class="pricing-card-price" style="font-size:32px; line-height:1.2;">Built around your audience<br>& your offer</div>
-        <div class="pricing-card-note">audited on the call • quoted before launch</div>
+        <div class="pricing-card-label">DONE-FOR-YOU CLIENT ACQUISITION</div>
+        <div class="pricing-card-price" style="font-size:32px; line-height:1.2;">Built around your offer.<br>Aligned with your goals.</div>
+        <div class="pricing-card-note">Custom setup + performance · Agreed before launch</div>
         <ul class="pricing-card-list">
-          <li>ICP list build + audit & mapping</li>
-          <li>Profile rebuild (headline, about, featured)</li>
-          <li>Content → DM + outbound sequences</li>
-          <li>Warm + cold outreach (LinkedIn & email)</li>
-          <li>Daily inbox & qualification</li>
-          <li>Routing & handoff</li>
-          <li>Weekly reporting + optimization</li>
-          <li>Custom model — agreed before launch, tracked</li>
+          <li>Ideal customer research & prospect list building</li>
+          <li>Offer positioning & LinkedIn profile optimization</li>
+          <li>Campaign copy, follow-ups & LinkedIn content</li>
+          <li>Managed cold email & LinkedIn outreach</li>
+          <li>Inbox management & agreed qualification criteria</li>
+          <li>Calendar booking & sales handoff</li>
+          <li>Weekly reporting & campaign optimization</li>
+          <li>Setup, performance terms & measurement agreed upfront</li>
         </ul>
-        <div class="pricing-cta"><a href="https://calendly.com/nikhilbajajbusiness/introduction" class="btn-primary" target="_blank" rel="noopener">Get Custom Quote</a></div>
-        <p style="margin-top:14px; font-family:var(--font-mono); font-size:11px; color:var(--text-secondary); text-align:center;">No retainer bloat. Quoted after audit.</p>
+        <div class="pricing-cta"><a href="https://calendly.com/nikhilbajajbusiness/introduction" class="btn-primary" target="_blank" rel="noopener">Discuss Your Campaign</a></div>
+        <p style="margin-top:14px; font-family:var(--font-mono); font-size:11px; color:var(--text-secondary); text-align:center;">Review the scope and terms before you commit.</p>
       </div>
     </div>
   </section>
@@ -1739,44 +1800,55 @@
   <!-- Shared FAQ -->
   <section class="section section-border reveal" id="faq">
     <p class="section-label">FAQ</p>
-    <h2 class="section-heading">Questions</h2>
+    <h2 class="section-heading">A few things you might be wondering.</h2>
     <div class="faq-item open">
-      <div class="faq-question">How do you monetize without being spammy?</div>
-      <div class="faq-answer">We segment by ICP and use trigger DMs. Only qualified buyers are activated — reputation stays intact.</div>
+      <h3><button class="faq-question" id="faq-question-0" aria-expanded="true" aria-controls="faq-answer-0">What does Revenues Labs handle?</button></h3>
+      <div class="faq-answer" id="faq-answer-0" role="region" aria-labelledby="faq-question-0">We manage prospect research, messaging, email and LinkedIn outreach, follow-ups, reply handling, qualification and booking. We also help align your LinkedIn profile and content with your offer. Your campaign scope is agreed before launch.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-question">Do I need to post daily?</div>
-      <div class="faq-answer">No. 3x/week in your voice is enough. We handle pillars, hooks, and CTAs.</div>
+      <h3><button class="faq-question" id="faq-question-1" aria-expanded="false" aria-controls="faq-answer-1">Do I need a large LinkedIn audience?</button></h3>
+      <div class="faq-answer" id="faq-answer-1" role="region" aria-labelledby="faq-question-1" hidden>No. If you have an existing audience, we can identify relevant connections to approach. If you don’t, we build a prospect list around your ideal customer and reach out through email and LinkedIn.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-question">Build or monetize — which do you do?</div>
-      <div class="faq-answer">Both. Big audience → monetize warm. Small → we build ICP list and go direct via LinkedIn + email. No fame chase.</div>
+      <h3><button class="faq-question" id="faq-question-2" aria-expanded="false" aria-controls="faq-answer-2">What counts as a qualified sales call?</button></h3>
+      <div class="faq-answer" id="faq-answer-2" role="region" aria-labelledby="faq-question-2" hidden>We agree on the criteria together before launch, including the prospect’s role, company, market and interest in your offer. That definition guides qualification, reporting and any performance terms.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-question">Small LinkedIn — under 1k, still fit?</div>
-      <div class="faq-answer">Yes. We build ICP list day one and start outreach. No 10k needed.</div>
+      <h3><button class="faq-question" id="faq-question-3" aria-expanded="false" aria-controls="faq-answer-3">How quickly will I see results?</button></h3>
+      <div class="faq-answer" id="faq-answer-3" role="region" aria-labelledby="faq-question-3" hidden>Timing depends on your offer, market, campaign setup and how prospects respond. We agree on a launch plan during onboarding and review progress weekly. We don’t promise a fixed number of clients or a guaranteed revenue outcome.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-question">How does pricing work?</div>
-      <div class="faq-answer">We audit on the intro call, then quote custom setup + performance. Approved upfront, tracked.</div>
+      <h3><button class="faq-question" id="faq-question-4" aria-expanded="false" aria-controls="faq-answer-4">How does pricing work?</button></h3>
+      <div class="faq-answer" id="faq-answer-4" role="region" aria-labelledby="faq-question-4" hidden>We quote a custom setup and performance model after reviewing your business. The scope, qualification criteria, performance terms and how they’re measured are agreed upfront.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-question">What’s a qualified meeting?</div>
-      <div class="faq-answer">We define it together: title, company, market, intent. Only those count.</div>
+      <h3><button class="faq-question" id="faq-question-5" aria-expanded="false" aria-controls="faq-answer-5">Will I have to manage campaigns myself?</button></h3>
+      <div class="faq-answer" id="faq-answer-5" role="region" aria-labelledby="faq-question-5" hidden>We handle the day-to-day outreach and inbox work. You help us understand your offer, approve messaging, take sales calls and share feedback. If LinkedIn content is part of the scope, we agree on a review and publishing routine with you.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-question">How hands-on am I?</div>
-      <div class="faq-answer">Light. Post 3x/week, take calls. We handle the rest.</div>
+      <h3><button class="faq-question" id="faq-question-6" aria-expanded="false" aria-controls="faq-answer-6">How do you keep outreach relevant?</button></h3>
+      <div class="faq-answer" id="faq-answer-6" role="region" aria-labelledby="faq-question-6" hidden>We start with a specific buyer profile and tailor messaging to the problem your offer solves. The goal is a relevant business conversation, with thoughtful follow-up rather than a generic pitch to everyone.</div>
     </div>
   </section>
+
+
+  <section class="contact-section reveal" id="contact">
+    <p class="section-label">Let’s talk pipeline</p>
+    <h2 class="section-heading">Your next sales conversation starts here.</h2>
+    <p class="section-subtext">Tell us what you sell and who you want to reach. We’ll review your current approach and discuss what an outreach system could look like for your business.</p>
+    <a href="https://calendly.com/nikhilbajajbusiness/introduction" class="btn-primary" target="_blank" rel="noopener">Book a Strategy Call</a>
+    <p class="cta-note">A conversation about your offer, your buyers and the right next step.</p>
+  </section>
+  </main>
 
   <footer class="footer">
     <span class="footer-copy">&copy; 2026 Revenues Labs</span>
     <ul class="footer-links">
-      <li><a href="#system">System</a></li>
+      <li><a href="#system">Services</a></li>
+        <li><a href="#process">How it works</a></li>
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#faq">FAQ</a></li>
-      <li><a href="https://calendly.com/nikhilbajajbusiness/introduction" target="_blank" rel="noopener">Book a Call</a></li>
+      <li><a href="https://calendly.com/nikhilbajajbusiness/introduction" target="_blank" rel="noopener">Book a Strategy Call</a></li>
     </ul>
   </footer>
 
@@ -1784,13 +1856,32 @@
     // FAQ toggle
     document.querySelectorAll('.faq-question').forEach(q => {
       q.addEventListener('click', () => {
-        q.parentElement.classList.toggle('open');
+        const item = q.closest('.faq-item');
+        const isOpen = item.classList.toggle('open');
+        q.setAttribute('aria-expanded', String(isOpen));
+        document.getElementById(q.getAttribute('aria-controls')).hidden = !isOpen;
       });
     });
 
     // Mobile nav toggle
-    document.querySelector('.nav-toggle').addEventListener('click', () => {
-      document.querySelector('.nav-links').classList.toggle('open');
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    function closeMenu() {
+      navLinks.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.setAttribute('aria-label', 'Open navigation');
+    }
+    navToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+      navToggle.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && navLinks.classList.contains('open')) {
+        closeMenu();
+        navToggle.focus();
+      }
     });
 
     // Theme Toggle
